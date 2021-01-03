@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/ -->
+<html lang="fr-FR" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="preload" href="https://www.kernix.com/default/dist/fonts/icons/kernix.woff2" as="font" type="font/woff2" crossorigin="">
+<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<meta property="og:image" content="https://www.kernix.com/doc/Image-classification@2x-1.jpg"><meta property="twitter:image" content="https://www.kernix.com/doc/Image-classification@2x-1.jpg">
+<title>Image classification with a pre-trained deep neural network - Agence Web Kernix</title>
+<meta name="description" content="Deep learning attempts to model data through multiple processing layers containing non-linearities.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Image classification with a pre-trained deep neural network - Agence Web Kernix">
+<meta property="og:description" content="Deep learning attempts to model data through multiple processing layers containing non-linearities.">
+<meta property="og:url" content="https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/">
+<meta property="og:site_name" content="Agence Web Kernix">
+<meta property="article:publisher" content="https://www.facebook.com/agencekernix">
+<meta property="article:modified_time" content="2020-07-07T20:54:55+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Kernix">
+<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.kernix.com/#organization","name":"Kernix","url":"https://www.kernix.com/","sameAs":["https://www.facebook.com/agencekernix","https://www.instagram.com/agencekernix/","https://www.linkedin.com/company/kernix/","https://www.youtube.com/channel/UCRphqOY8r3KM8sUVj80SztA","https://cz.pinterest.com/agencekernix/","https://twitter.com/Kernix"],"logo":{"@type":"ImageObject","@id":"https://www.kernix.com/#logo","inLanguage":"fr-FR","url":"https://www.kernix.com/doc/logo/Kernix.png","width":192,"height":192,"caption":"Kernix"},"image":{"@id":"https://www.kernix.com/#logo"}},{"@type":"WebSite","@id":"https://www.kernix.com/#website","url":"https://www.kernix.com/","name":"Agence Web Kernix","description":"","publisher":{"@id":"https://www.kernix.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://www.kernix.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"fr-FR"},{"@type":"WebPage","@id":"https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/#webpage","url":"https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/","name":"Image classification with a pre-trained deep neural network - Agence Web Kernix","isPartOf":{"@id":"https://www.kernix.com/#website"},"datePublished":"2016-06-21T20:29:13+00:00","dateModified":"2020-07-07T20:54:55+00:00","description":"Deep learning\u00a0attempts to model data through multiple processing layers containing non-linearities.","inLanguage":"fr-FR","potentialAction":[{"@type":"ReadAction","target":["https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/"]}]}]}</script>
+<link rel="stylesheet" id="kernix-theme-style-css" href="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/main.min.css" type="text/css" media="all">
+<link rel="icon" href="https://www.kernix.com/doc/favicon.png" sizes="32x32">
+<link rel="icon" href="https://www.kernix.com/doc/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://www.kernix.com/doc/favicon.png">
+<meta name="msapplication-TileImage" content="https://www.kernix.com/doc/favicon.png">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+<link rel="apple-touch-icon" sizes="57x57" href="https://www.kernix.com/default/dist/img/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://www.kernix.com/default/dist/img/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://www.kernix.com/default/dist/img/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://www.kernix.com/default/dist/img/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://www.kernix.com/default/dist/img/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://www.kernix.com/default/dist/img/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.kernix.com/default/dist/img/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://www.kernix.com/default/dist/img/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.kernix.com/default/dist/img/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.kernix.com/default/dist/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://www.kernix.com/default/dist/img/favicons/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.kernix.com/default/dist/img/favicons/favicon-16x16.png">
+<link rel="mask-icon" href="https://www.kernix.com/default/dist/img/favicons/safari-pinned-tab.svg" color="#003cff">
+<link rel="shortcut icon" href="https://www.kernix.com/default/dist/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Kernix">
+<meta name="application-name" content="Kernix">
+<meta name="msapplication-TileColor" content="#003cff">
+<meta name="msapplication-TileImage" content="https://www.kernix.com/default/dist/img/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="https://www.kernix.com/default/dist/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<link rel="alternate" type="application/rss+xml" title="Agence Web Kernix » Flux" href="https://feeds.feedburner.com/AgenceWebKernix">
+<script type="text/javascript" src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/tarteaucitron.js"></script>
+<script type="text/javascript" src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/tarteaucitron.services.min.js"></script>
+<script type="text/javascript" src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/tarteaucitron.fr.min.js"></script>
+<script type="text/javascript">
+    var tarteaucitronCustomText = {
+      "alertBigPrivacy": "<div>Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. Acceptez-vous nos adorables cookies ? Pour en savoir plus : <a target='_blank' href='https://www.kernix.com/protection-des-donnees/'>protection des données</a></div>",
+      "personalize": "Personnaliser",
+      "acceptAll": "Accepter",
+      "alertSmall": "Gérer mes cookies",
+      "saveQuit": "Enregistrer et quitter"
+    };
+  </script>
+<script type="text/javascript">
+  tarteaucitron.init({
+    "privacyUrl": "",
+    "hashtag": "#kernixCookie",
+    "cookieName": "kernixCookie",
+    "orientation": "bottom",
+    "showAlertSmall": true,
+    "showIcon": false,
+    "cookieslist": true,
+    "adblocker": false,
+    "AcceptAllCta": true,
+    "highPrivacy": true,
+    "handleBrowserDNTRequest": false,
+    "DenyAllCta": false,
+    "removeCredit": false,
+    "moreInfoLink": true,
+    "useExternalJs": true,
+    "useExternalCss": true,
+    "mandatory": false
+  });
+</script>
+<script type="text/javascript">
+ tarteaucitron.user.gajsUa = 'UA-77207-14';
+ tarteaucitron.user.gajsMore = function () { /* add here your optionnal _ga.push() */ };
+ (tarteaucitron.job = tarteaucitron.job || []).push('gajs');
+</script>
+<style type="text/css">#mc_embed_signup input.mce_inline_error { border-color:#6B0505; } #mc_embed_signup div.mce_inline_error { margin: 0 0 1em 0; padding: 5px 10px; background-color:#6B0505; font-weight: bold; z-index: 1; color:#fff; }</style></head>
+<body class="no-footer-wrap article-page" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" style="zoom: 1;">
+<a class="accessibility-content-link sr-only sr-only-focusable" href="https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/#content">
+Passer au contenu principal </a>
+<header class="header-wrap" role="banner">
+<div class="container">
+<div class="clip clip-header clip--reverse">
+<div class="clip__item clip__item--active" style="transform: translateY(0%);">
+<div class="clip__content clip__content--active" style="transform: translateY(0%);">
+<div class="header-content ">
+<a href="https://www.kernix.com/" class="header-logo">
+<i class="icon-kernix" data-no-lazy="1"></i>
+<span class="sr-only">
+Kernix, retour à l'accueil </span>
+</a>
+<div class="main-desktop-nav access-desktop">
+<div class="main-desktop-content">
+<nav class="main-nav">
+<ul id="menu-menu" class="list-inline"><li id="menu-item-44" class="menu-realisation menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="https://www.kernix.com/realisations/">Réalisations</a></li>
+<li id="menu-item-328" class="menu-expertise menu-item menu-item-type-post_type menu-item-object-page menu-item-328"><a href="https://www.kernix.com/expertises/">Expertises</a></li>
+<li id="menu-item-41" class="menu-article menu-item menu-item-type-post_type menu-item-object-page menu-item-41"><a href="https://www.kernix.com/articles/">Articles</a></li>
+<li id="menu-item-42" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42"><a href="https://www.kernix.com/agence/">Agence</a></li>
+<li id="menu-item-348" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-348"><a href="https://www.kernix.com/recrutement/">Recrutement
+</a></li>
+<li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a href="https://www.kernix.com/contact/">Contact</a></li>
+</ul> </nav>
+<nav class="socials-list">
+<ul class="list-socials list-inline">
+<li class="list-inline-item">
+<a href="https://twitter.com/kernix" target="_blank" rel="noopener" class="link-twitter">
+<i class="icon-twitter "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le twitter Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://fr.linkedin.com/company/kernix" target="_blank" rel="noopener" class="link-linkedin">
+<i class="icon-linkedin "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le linkedin Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.facebook.com/agencekernix" target="_blank" rel="noopener" class="link-facebook">
+<i class="icon-facebook-f "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le facebook Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.instagram.com/agencekernix/" target="_blank" rel="noopener" class="link-instagram">
+<i class="icon-instagram "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le instagram Agence Web Kernix  </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.behance.net/Kernixdesign" target="_blank" rel="noopener" class="link-behance">
+<i class="icon-behance "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le behance Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://dribbble.com/Kernix" target="_blank" rel="noopener" class="link-dribbble">
+<i class="icon-dribbble "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le dribbble Agence Web Kernix </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<button type="button" class="btn btn-link btn-menu-mobile link-menu-mobile access-mobile" aria-expanded="true" tabindex="-1" aria-hidden="true">
+<span class="burger"></span>
+<span class="sr-only">Ouvrir le menu mobile</span>
+</button>
+</div>
+</div>
+</div>
+<div class="clip__item " style="transform: translateY(-110%);">
+<div class="clip__content " style="transform: translateY(110%);">
+<div class="header-content header-white-content">
+<a href="https://www.kernix.com/" class="header-logo">
+<i class="icon-kernix" data-no-lazy="1"></i>
+<span class="sr-only">
+Kernix, retour à l'accueil </span>
+</a>
+<div class="main-desktop-nav access-desktop">
+<div class="main-desktop-content">
+<nav class="main-nav">
+<ul id="menu-menu-1" class="list-inline"><li class="menu-realisation menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="https://www.kernix.com/realisations/">Réalisations</a></li>
+<li class="menu-expertise menu-item menu-item-type-post_type menu-item-object-page menu-item-328"><a href="https://www.kernix.com/expertises/">Expertises</a></li>
+<li class="menu-article menu-item menu-item-type-post_type menu-item-object-page menu-item-41"><a href="https://www.kernix.com/articles/">Articles</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42"><a href="https://www.kernix.com/agence/">Agence</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-348"><a href="https://www.kernix.com/recrutement/">Recrutement
+</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a href="https://www.kernix.com/contact/">Contact</a></li>
+</ul> </nav>
+<nav class="socials-list">
+<ul class="list-socials list-inline">
+<li class="list-inline-item">
+<a href="https://twitter.com/kernix" target="_blank" rel="noopener" class="link-twitter">
+<i class="icon-twitter "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le twitter Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://fr.linkedin.com/company/kernix" target="_blank" rel="noopener" class="link-linkedin">
+<i class="icon-linkedin "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le linkedin Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.facebook.com/agencekernix" target="_blank" rel="noopener" class="link-facebook">
+<i class="icon-facebook-f "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le facebook Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.instagram.com/agencekernix/" target="_blank" rel="noopener" class="link-instagram">
+<i class="icon-instagram "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le instagram Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.behance.net/Kernixdesign" target="_blank" rel="noopener" class="link-behance">
+<i class="icon-behance "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le behance Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://dribbble.com/Kernix" target="_blank" rel="noopener" class="link-dribbble">
+<i class="icon-dribbble "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le dribbble Agence Web Kernix </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<button type="button" class="btn btn-link btn-menu-mobile link-menu-mobile access-mobile" aria-expanded="true" tabindex="-1" aria-hidden="true">
+<span class="burger"></span>
+<span class="sr-only">Ouvrir le menu mobile</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="main-mobile-nav access-mobile" tabindex="-1" aria-hidden="true">
+<div class="main-mobile-content">
+<nav class="main-nav">
+<ul id="menu-menu-2" class="list-inline"><li class="menu-realisation menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="https://www.kernix.com/realisations/">Réalisations</a></li>
+<li class="menu-expertise menu-item menu-item-type-post_type menu-item-object-page menu-item-328"><a href="https://www.kernix.com/expertises/">Expertises</a></li>
+<li class="menu-article menu-item menu-item-type-post_type menu-item-object-page menu-item-41"><a href="https://www.kernix.com/articles/">Articles</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42"><a href="https://www.kernix.com/agence/">Agence</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-348"><a href="https://www.kernix.com/recrutement/">Recrutement
+</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a href="https://www.kernix.com/contact/">Contact</a></li>
+</ul> </nav>
+<nav class="socials-list">
+<ul class="list-socials list-inline">
+<li class="list-inline-item">
+<a href="https://twitter.com/kernix" target="_blank" rel="noopener" class="link-twitter">
+<i class="icon-twitter "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le twitter Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://fr.linkedin.com/company/kernix" target="_blank" rel="noopener" class="link-linkedin">
+<i class="icon-linkedin "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le linkedin Agence Web Kernix </span>
+</a>
+</li>
+ <li class="list-inline-item">
+<a href="https://www.facebook.com/agencekernix" target="_blank" rel="noopener" class="link-facebook">
+<i class="icon-facebook-f "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le facebook Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.instagram.com/agencekernix/" target="_blank" rel="noopener" class="link-instagram">
+<i class="icon-instagram "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le instagram Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.behance.net/Kernixdesign" target="_blank" rel="noopener" class="link-behance">
+<i class="icon-behance "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le behance Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://dribbble.com/Kernix" target="_blank" rel="noopener" class="link-dribbble">
+<i class="icon-dribbble "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le dribbble Agence Web Kernix </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<main id="content" class="main-wrap">
+<div class="scroll-timeline" style="width: 14.078%; opacity: 1;">
+<div class="clip clip-scroll-timeline clip--reverse">
+<div class="clip__item clip__item--active" style="transform: translateY(0%);">
+<div class="clip__content clip__content--active" style="transform: translateY(0%);">
+<div class="scroll-timeline-indicator"></div>
+</div>
+</div>
+<div class="clip__item" style="transform: translateY(-110%);">
+<div class="clip__content" style="transform: translateY(110%);">
+<div class="scroll-timeline-indicator scroll-white"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="article-wrap">
+<div class="scroll-wrap">
+<section class="article-title-section default-section white-header-section">
+<div class="container">
+<div class="article-tag">AI &amp; Machine learning</div>
+<h1 class="article-title">Image classification with a pre-trained deep neural network</h1>
+<ul class="article-tag-list list-inline">
+<li class="list-inline-item">Image processing<span class="article-tag-point">,&nbsp;</span></li>
+</ul>
+</div>
+</section>
+<section class="article-img-section default-section">
+<div class="container">
+<div class="article-main-img" style="background-image:url(&#39;https://www.kernix.com/doc/Image-classification@2x-1.jpg&#39;)" data-no-lazy="1">
+</div>
+</div>
+</section>
+<section class="lead-paragraph-section">
+<div class="container">
+<div class="row">
+<div class="col-md-4 col-xl-3 col-author">
+<div class="clip-author">
+<div class="author-block affix-title affix">
+<div class="author-article-title">Image classification with a pre-trained deep neural network</div>
+<div class="author-article-content">
+<ul class="authors-img-list list-inline ">
+<li class="list-inline-item">
+<div class="author-img rocket-lazyload lazyloaded" style="background-image: url(&quot;https://www.kernix.com/doc/man.svg&quot;);" data-ll-status="loaded">
+</div>
+ </li>
+</ul>
+<div class="author-detail">
+<ul class="authors-name-list list-unstyled">
+<li><div class="author-name">Kernix Lab<span class="author-point">,&nbsp;</span></div></li>
+</ul>
+<div class="article-date">
+Publié le 21/06/2016 </div>
+<div class="nav-share">
+<div class="share-title">Partager sur</div>
+<ul class="list-unstyled">
+<li>
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/" target="_blank" rel="noopener" class="link-facebook">
+<i class="icon-facebook-f"></i>
+<span class="sr-only">Partager l'article sur Facebook</span>
+</a>
+</li>
+<li>
+<a href="https://twitter.com/intent/tweet?text=Image%20classification%20with%20a%20pre-trained%20deep%20neural%20network%20https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/&amp;original_referer=https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/" target="_blank" rel="noopener" class="link-twitter">
+<i class="icon-twitter"></i>
+<span class="sr-only">Partager l'article sur Twitter</span>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/&amp;title=Image%20classification%20with%20a%20pre-trained%20deep%20neural%20network&amp;summary=&amp;source=https://www.kernix.com/article/image-classification-with-a-pre-trained-deep-neural-network/" target="_blank" rel="noopener" class="link-linkedin">
+<i class="icon-linkedin"></i>
+<span class="sr-only">Partager l'article sur Linkedin</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="other-articles-block">
+<h3 class="other-articles-title">Autres articles</h3>
+<ul class="other-articles-list list-unstyled">
+<li><a href="https://www.kernix.com/article/gardez-une-trace-de-chacune-de-vos-experiences-avec-mlflow-tracking/">Gardez une trace de chacune de vos expériences avec MLFlow Tracking</a></li>
+<li><a href="https://www.kernix.com/article/deconfinement-retour-progressif-au-bureau-et-teletravail-toujours-en-place/">Déconfinement : retour progressif au bureau et télétravail toujours en place</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-8 col-xl-9">
+<div class="cms-content">
+<p><a href="https://en.wikipedia.org/wiki/Deep_learning" target="_blank" rel="noopener">Deep learning</a>&nbsp;attempts to model data through multiple processing layers containing non-linearities. It has proved very efficient in classifying images, as shown by the impressive results of deep neural networks on the&nbsp;<a href="http://www.image-net.org/challenges/LSVRC/" target="_blank" rel="noopener">ImageNet Competition</a>&nbsp;for example. However, training these models requires very large datasets and is quite time consuming.</p>
+<p>So in this tutorial, we will show how it is possible to obtain very good image classification performance with a pre-trained deep neural network that will be used to extract relevant features and a linear SVM that will be trained on these features to classify the images. We will use&nbsp;<a href="https://www.tensorflow.org/" target="_blank" rel="noopener">TensorFlow</a>, Google’s deep learning system that was open sourced last November, and&nbsp;<a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">scikit-learn</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="article-content-section">
+<div class="default-section">
+<div class="container">
+<div class="row">
+<div class="col-md-4 col-xl-3">
+</div>
+<div class="col-md-8 col-xl-9">
+<div class="cms-content">
+<div class="data-wrap">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/process.png" alt="classification process" class="lazyloaded" data-ll-status="loaded"><noscript><img src="https://www.kernix.com/doc/articles/process.png" alt="classification process" /></noscript></p>
+<p>This tutorial shows an example of <a href="ftp://ftp.cs.wisc.edu/machine-learning/shavlik-group/torrey.handbook09.pdf" target="_blank" rel="noopener">transfer learning</a>: a deep neural network that is highly efficient on some task should be useful for solving related problems. Here we will use a network developed by Google, the <a href="https://arxiv.org/abs/1512.00567" target="_blank" rel="noopener">Inception-v3</a>, that has been trained on some images (the <a href="http://www.image-net.org/" target="_blank" rel="noopener">ImageNet dataset</a>) to extract relevant features on another dataset that does not include the same categories.</p>
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Gathering-images">Gathering images</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will classify images from the <a href="http://research.microsoft.com/en-us/people/xingx/pi100.aspx" target="_blank" rel="noopener">Product Image Categorization Dataset</a>.</p>
+<p>This dataset contains images of products from different categories collected on MSN shopping, such as baby shoes or skates for example. Images are 100 x 100 pixels and they are labelled with their category.</p>
+<div style="text-align: center;"><img src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/baby_shoe_0.jpg" alt="baby shoe" class="lazyloaded" data-ll-status="loaded"><noscript><img src="https://www.kernix.com/doc/articles/baby_shoe_0.jpg" alt="baby shoe" /></noscript> <img src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/skates_0.jpg" alt="skates" class="lazyloaded" data-ll-status="loaded"><noscript><img src="https://www.kernix.com/doc/articles/skates_0.jpg" alt="skates" /></noscript></div>
+<div></div>
+<p>This dataset is interesting because it contains some categories of products that are not present in the ImageNet dataset, such as hiking backpacks for example.</p>
+<p>For this tutorial, we selected 48 categories (out of the 100 available), in order to reduce computation time. These categories were selected based on their similarity (e.g. different kind of shoes) in order to increase the complexity of the classification task.</p>
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+<h2 id="From-images-to-features">From images to features</h2>
+<p>In this section we will extract features from images using a pre-trained deep learning model.</p>
+<p>We will use the following Python librairies :</p>
+<ul>
+<li>tensorflow</li>
+<li>numpy</li>
+<li>pandas</li>
+<li>scikit-learn</li>
+<li>matplotlib</li>
+<li>pickle</li>
+</ul>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">tensorflow.python.platform</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.platform</span> <span class="kn">import</span> <span class="n">gfile</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span><span class="p">,</span> <span class="n">LinearSVC</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">pickle</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Inception-v3">Inception-v3</h3>
+<p>The pre-trained deep learning model that will be used is <a href="https://arxiv.org/abs/1512.00567" target="_blank" rel="noopener">Inception-v3</a>. It has been developed by Google and has been trained for the ImageNet Competition using the data from 2012. We chose this model because of its high classification performance and because it is easily available in TensorFlow.</p>
+<p>To download this model into the tutorial directory, you should run in a terminal:</p>
+<p><code>cd tensorflow/models/image/imagenet python classify_image.py --model_dir TUTORIAL_DIR/imagenet</code></p>
+<p>The pre-trained model will be in the imagenet directory within your tutorial directory. The images are assumed to be in the images directory within your tutorial directory.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="n">model_dir</span> <span class="o">=</span> <span class="s1">'imagenet'</span>
+<span class="n">images_dir</span> <span class="o">=</span> <span class="s1">'images/'</span>
+<span class="n">list_images</span> <span class="o">=</span> <span class="p">[</span><span class="n">images_dir</span><span class="o">+</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">images_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">'jpg|JPG'</span><span class="p">,</span> <span class="n">f</span><span class="p">)]</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To use TensorFlow, you should define a graph that represents the description of computations. Then these computations will be executed within what is called sessions. If you want to know more about the basics of TensorFlow, you can go <a href="https://www.tensorflow.org/versions/r0.9/get_started/basic_usage.html" target="_blank" rel="noopener">here</a>.</p>
+<p>The following function creates a graph from the graph definition that we just downloaded and that is saved in classify_image_graph_def.pb</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="k">def</span> <span class="nf">create_graph</span><span class="p">():</span>
+<span class="k">with</span> <span class="n">gfile</span><span class="o">.</span><span class="n">FastGFile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="n">model_dir</span><span class="p">,</span> <span class="s1">'classify_image_graph_def.pb'</span><span class="p">),</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="n">graph_def</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">GraphDef</span><span class="p">()</span>
+<span class="n">graph_def</span><span class="o">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">import_graph_def</span><span class="p">(</span><span class="n">graph_def</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then, the next step is to extract relevant features.</p>
+<p>To do so, we retrieve the <a href="https://arxiv.org/abs/1310.1531" target="_blank" rel="noopener">next-to-last layer of the Inception-v3</a> as a feature vector for each image. Indeed, the last layer of the convolutional neural network corresponds to the classification step: as it has been trained for the ImageNet dataset, the categories that it will be output will not correspond to the categories in the Product Image Classification dataset we are interested in.</p>
+<p>The output of the next-to-last layer, however, corresponds to features that are used for the classification in Inception-v3. The hypothesis here is that these features can be useful for training another classification model, so we extract the output of this layer. In TensorFlow, this layer is called pool_3.</p>
+<p>The following function returns the features corresponding to the output of this next-to-last layer and the labels for each image.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="k">def</span> <span class="nf">extract_features</span><span class="p">(</span><span class="n">list_images</span><span class="p">):</span>
+<span class="n">nb_features</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">list_images</span><span class="p">),</span><span class="n">nb_features</span><span class="p">))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">create_graph</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+
+<span class="n">next_to_last_tensor</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_tensor_by_name</span><span class="p">(</span><span class="s1">'pool_3:0'</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_images</span><span class="p">):</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">ind</span><span class="o">%</span><span class="k">100</span> == 0):
+<span class="k">print</span><span class="p">(</span><span class="s1">'Processing </span><span class="si">%s</span><span class="s1">...'</span> <span class="o">%</span> <span class="p">(</span><span class="n">image</span><span class="p">))</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">gfile</span><span class="o">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">fatal</span><span class="p">(</span><span class="s1">'File does not exist </span><span class="si">%s</span><span class="s1">'</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+
+<span class="n">image_data</span> <span class="o">=</span> <span class="n">gfile</span><span class="o">.</span><span class="n">FastGFile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">next_to_last_tensor</span><span class="p">,</span>
+<span class="p">{</span><span class="s1">'DecodeJpeg/contents:0'</span><span class="p">:</span> <span class="n">image_data</span><span class="p">})</span>
+<span class="n">features</span><span class="p">[</span><span class="n">ind</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_\d+'</span><span class="p">,</span><span class="n">image</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">return</span> <span class="n">features</span><span class="p">,</span> <span class="n">labels</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="n">features</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">extract_features</span><span class="p">(</span><span class="n">list_images</span><span class="p">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre xml:space="preserve">Processing images/baby_shoe_0.jpg...
+Processing images/basketball_hoop_0.jpg...
+Processing images/bath_spa_0.jpg...
+Processing images/binocular_0.jpg...
+Processing images/birdcage_0.jpg...
+Processing images/birdhouse_0.jpg...
+Processing images/boot_0.jpg...
+Processing images/cabinet_0.jpg...
+Processing images/calculator_0.jpg...
+Processing images/camcorder_0.jpg...
+Processing images/car_GPS_0.jpg...
+Processing images/cellphone_0.jpg...
+Processing images/computer_keyboard_0.jpg...
+Processing images/computer_monitor_0.jpg...
+Processing images/computer_mouse_0.jpg...
+Processing images/dvd_player_0.jpg...
+Processing images/earring_0.jpg...
+Processing images/electric_car_0.jpg...
+Processing images/eletectric_fan_0.jpg...
+Processing images/flower_0.jpg...
+Processing images/folding_chair_0.jpg...
+Processing images/glasses_0.jpg...
+Processing images/goblet_0.jpg...
+Processing images/golf_shaft_0.jpg...
+Processing images/guitar_0.jpg...
+Processing images/handheld_GPS_0.jpg...
+Processing images/hiking_backpack_0.jpg...
+Processing images/jacket_0.jpg...
+Processing images/laptop_0.jpg...
+Processing images/lens_0.jpg...
+Processing images/lighter_0.jpg...
+Processing images/luggage_0.jpg...
+Processing images/microphone_0.jpg...
+Processing images/microwave_oven_0.jpg...
+Processing images/mobile_accessory_0.JPG...
+Processing images/mp3_player_0.jpg...
+Processing images/office_chair_0.jpg...
+Processing images/pda_0.jpg...
+Processing images/printer_0.jpg...
+Processing images/projector_0.jpg...
+Processing images/security_camera_0.jpg...
+Processing images/shampoo_0.jpg...
+Processing images/shaver_0.jpg...
+Processing images/skates_0.jpg...
+Processing images/soccer_shoes_0.jpg...
+Processing images/stopwatch_0.jpg...
+Processing images/studio_monitor_0.jpg...
+Processing images/telephone_0.jpg...
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then the features and labels are saved, so they can be used without re-running this step that can be quite long (about 30 min on my laptop with 4 cores and 16 Go RAM).</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'features'</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">))</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'labels'</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">))</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Classification-based-on-the-features-computed-using-TensorFlow">Classification based on the features computed using TensorFlow</h2>
+<p>We will now use the features that we just computed with TensorFlow to train a classifier on the images. Another strategy could be to re-train the last layer of the CNN in TensorFlow, as shown <a href="https://www.tensorflow.org/versions/master/how_tos/image_retraining/index.html" target="_blank" rel="noopener">here in TensorFlow tutorials</a> and <a href="https://github.com/sthomp/tensorflow_transfer_cifar10" target="_blank" rel="noopener">here for the python version</a>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prepare-training-and-test-datasets">Prepare training and test datasets</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="n">features</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">'features'</span><span class="p">))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">'labels'</span><span class="p">))</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will use 80% of the data as the training set and 20% as the test set.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Classifying-the-images-with-a-Linear-Support-Vector-Machine-(SVM)">Classifying the images with a Linear Support Vector Machine (SVM)</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Following scikit-learn’s <a href="http://scikit-learn.org/stable/tutorial/machine_learning_map/" target="_blank" rel="noopener">machine learning map</a>, we chose to use a <a href="https://en.wikipedia.org/wiki/Support_vector_machine" target="_blank" rel="noopener">linear SVM</a> to classify the images into the 48 categories using the features computed with TensorFlow. We used the LinearSVC implementation with the default parameters.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="n">clf</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'squared_hinge'</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">'l2'</span><span class="p">,</span><span class="n">multi_class</span><span class="o">=</span><span class="s1">'ovr'</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will plot the <a href="http://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html">confusion matrix</a> (computed with scikit-learn) to visualize the classification performance, on top of the accuracy score.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span><span class="n">y_pred</span><span class="p">):</span>
+<span class="n">cm_array</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+<span class="n">true_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+<span class="n">pred_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm_array</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Confusion matrix"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">'Number of images'</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">xtick_marks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true_labels</span><span class="p">))</span>
+<span class="n">ytick_marks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pred_labels</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xtick_marks</span><span class="p">,</span> <span class="n">true_labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ytick_marks</span><span class="p">,</span><span class="n">pred_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'True label'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Predicted label'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">fig_size</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"figure.figsize"</span><span class="p">]</span>
+<span class="n">fig_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">fig_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"figure.figsize"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fig_size</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2">
+<pre xml:space="preserve"><span class="k">print</span><span class="p">(</span><span class="s2">"Accuracy: {0:0.1f}%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre xml:space="preserve">Accuracy: 95.4%
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class=""></div>
+</div>
+<p><img loading="lazy" class="aligncenter" src="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20750%20674&#39;%3E%3C/svg%3E" alt="Classification accuracy Kernix" width="750" height="674" data-lazy-src="https://www.kernix.com/doc/classification-accuracy.png"><noscript><img loading="lazy" class="aligncenter" src="https://www.kernix.com/doc/classification-accuracy.png" alt="Classification accuracy Kernix" width="750" height="674" /></noscript></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong>classification accuracy is 95.4 %</strong> on the test set, which is quite impressive, especially as it does not require so much work on our side !</p>
+<p>It is interesting to look at the confusion matrix to try to understand the errors. We can see that bath_spa images are sometimes misclassified as shampoo. This is not so surprising when you see examples of these categories :</p>
+<div style="text-align: center;"><img src="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%200%200&#39;%3E%3C/svg%3E" alt="bath spa" data-lazy-src="https://www.kernix.com/doc/articles/bath_spa_12.jpg"><noscript><img src="https://www.kernix.com/doc/articles/bath_spa_12.jpg" alt="bath spa" /></noscript> <img src="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%200%200&#39;%3E%3C/svg%3E" alt="shampoo" data-lazy-src="https://www.kernix.com/doc/articles/shampoo_106.jpg"><noscript><img src="https://www.kernix.com/doc/articles/shampoo_106.jpg" alt="shampoo" /></noscript></div>
+</div>
+</div>
+</div>
+</div>
+<div class="prompt input_prompt"></div>
+<div></div>
+<div></div>
+<h2>Comments and perspectives</h2>
+<div class="data-wrap">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This approach is interesting as we obtain very good classification accuracy with only a few lines of code and in about 30 minutes on a laptop.</p>
+<p>Although we could have obtained even better results with a fully trained deep neural network, this result highlights that the features extracted by Inception-v3 on the new images are highly relevant, even if the images used for the training were pretty different.</p>
+<p>Note however that the images used in this example were very clean, well centered, of the same size…When analyzing datasets in real life, it is often a lot messier, so it might require quite a lot of preprocessing to obtain satisfying results and the classification accuracy is likely to be lower.</p>
+<p><img style="max-width: 190px; width: 100%; margin: 20px auto 40px; display: block;" src="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%200%200&#39;%3E%3C/svg%3E" alt="ERDF" data-lazy-src="https://www.kernix.com/doc/articles/erdf.png"><noscript><img style="max-width: 190px; width: 100%; margin: 20px auto 40px; display: block;" src="https://www.kernix.com/doc/articles/erdf.png" alt="ERDF" /></noscript></p>
+<p>In one of our projects with ERDF, we successfully developed an approach similar to the one presented in this tutorial to classify pictures of electrical equipments.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<section class="newsletter-section default-section white-header-section">
+<div class="container">
+<div class="row row-reverse-xs">
+<div class="col-sm-4 col-relative">
+<img class="newsletter-img" src="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%200%200&#39;%3E%3C/svg%3E" alt="Newsletter Kernix" data-lazy-src="https://www.kernix.com/doc/Newsletter-blanc.svg"><noscript><img class="newsletter-img" src="https://www.kernix.com/doc/Newsletter-blanc.svg" alt="Newsletter Kernix"></noscript>
+</div>
+<div class="col-sm-8">
+<div class="newsletter-block">
+<h2 class="newsletter-title">Nous suivre</h2>
+<div class="newsletter-text">Recevez les news Kernix dans votre poche&nbsp;!</div>
+<div id="mc_embed_signup" class="newsletter-form">
+<form action="https://kernix.us20.list-manage.com/subscribe/post?u=33bb38e5ae214a75175f140ac&amp;id=e7661fae4f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" rel="noopener" novalidate="novalidate">
+<div id="mc_embed_signup_scroll" class="newsletter-form">
+<div class="mc-field-group">
+<div class="form-group">
+<label for="newsletter" class="sr-only">S'inscrire à la newsletter</label>
+<input id="newsletter" class="form-control form-alt-control required email" value="" type="email" name="EMAIL" placeholder="S&#39;inscrire à la newsletter" required="" aria-required="true">
+<button type="submit" class="btn btn-primary" name="subscribe" id="mc-embedded-subscribe" value="Subscribe">
+<i class="icon-paper-plane" data-no-lazy="1"></i>
+<span class="sr-only">S'inscrire à la newsletter</span>
+</button>
+</div>
+</div>
+<div id="mce-responses" class="clear">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>
+<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b08a3c09c2b18d53646bb8a56_7cb1c80431" tabindex="-1" value=""></div>
+</div>
+</form>
+</div>
+<script type="text/javascript" src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/mc-validate.js"></script>
+<script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email'; /*
+   * Translated default messages for the $ validation plugin.
+   * Locale: FR
+   */
+  $.extend($.validator.messages, {
+    required: "Ce champ est requis.",
+    remote: "Veuillez remplir ce champ pour continuer.",
+    email: "Veuillez entrer une adresse email valide.",
+    url: "Veuillez entrer une URL valide.",
+    date: "Veuillez entrer une date valide.",
+    dateISO: "Veuillez entrer une date valide (ISO).",
+    number: "Veuillez entrer un nombre valide.",
+    digits: "Veuillez entrer (seulement) une valeur numérique.",
+    creditcard: "Veuillez entrer un numéro de carte de crédit valide.",
+    equalTo: "Veuillez entrer une nouvelle fois la même valeur.",
+    accept: "Veuillez entrer une valeur avec une extension valide.",
+    maxlength: $.validator.format("Veuillez ne pas entrer plus de {0} caractères."),
+    minlength: $.validator.format("Veuillez entrer au moins {0} caractères."),
+    rangelength: $.validator.format("Veuillez entrer entre {0} et {1} caractères."),
+    range: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+    max: $.validator.format("Veuillez entrer une valeur inférieure ou égale à {0}."),
+    min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}.")
+  });}(jQuery));
+  var $mcj = jQuery.noConflict(true);
+  </script>
+<nav class="socials-list">
+<ul class="list-socials list-inline">
+<li class="list-inline-item">
+<a href="https://twitter.com/kernix" target="_blank" rel="noopener" class="link-twitter">
+<i class="icon-twitter "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le twitter Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://fr.linkedin.com/company/kernix" target="_blank" rel="noopener" class="link-linkedin">
+<i class="icon-linkedin "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le linkedin Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.facebook.com/agencekernix" target="_blank" rel="noopener" class="link-facebook">
+<i class="icon-facebook-f "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le facebook Agence Web Kernix </span>
+</a>
+</li>
+ <li class="list-inline-item">
+<a href="https://www.instagram.com/agencekernix/" target="_blank" rel="noopener" class="link-instagram">
+<i class="icon-instagram "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le instagram Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://www.behance.net/Kernixdesign" target="_blank" rel="noopener" class="link-behance">
+<i class="icon-behance "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le behance Agence Web Kernix </span>
+</a>
+</li>
+<li class="list-inline-item">
+<a href="https://dribbble.com/Kernix" target="_blank" rel="noopener" class="link-dribbble">
+<i class="icon-dribbble "></i>
+<span class="sr-only">
+(Nouvelle fenêtre) Aller sur le dribbble Agence Web Kernix </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="next-article-section next-section">
+<div class="next-article-padding default-section"></div>
+<a class="next-article-link" href="https://www.kernix.com/article/apache-spark-cas-dusage-et-fonctionnement/">
+<div class="default-section">
+<div class="container">
+<div class="next-title">Découvrez également l'article</div>
+</div>
+</div>
+<div class="next-article-title-section">
+<div class="container">
+<div class="clip clip-next-article">
+<div class="clip__item clip__item--active" style="transform: translateY(0%);">
+<div class="clip__content clip__content--active" style="transform: translateY(0%);">
+<div class="next-article-title-block">
+<div class="next-article-title-content">
+<div class="next-article-tag">AI &amp; Machine learning</div>
+<h2 class="next-article-title">Apache Spark : cas d’usage et fonctionnement</h2>
+<ul class="next-article-tag-list list-inline">
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="clip__item" style="transform: translateY(-110%);">
+<div class="clip__content" style="transform: translateY(110%);">
+<div class="next-article-title-block next-white-title-block">
+<div class="next-article-title-content">
+<div class="next-article-tag">AI &amp; Machine learning</div>
+<h2 class="next-article-title">Apache Spark : cas d’usage et fonctionnement</h2>
+<ul class="next-article-tag-list list-inline">
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="next-img-section">
+<div class="container">
+<div data-bg="https://www.kernix.com/doc/Spark@2x.jpg" class="next-img rocket-lazyload" style=""></div>
+</div>
+</div>
+</a>
+<div class="next-article-overlay default-section white-header-section">
+<div class="next-article-overlay-content" style="height: 221px;"></div>
+</div>
+</section>
+</div>
+</main>
+<a href="javascript:void(0)" class="btn btn-link btn-top btn-top-desktop btn-active">
+<div class="clip clip-btn-top clip--reverse">
+<div class="clip__item clip__item--active" style="transform: translateY(0%);">
+<div class="clip__content clip__content--active" style="transform: translateY(0%);">
+<div class="top-label top-black"><span>Haut de page</span></div>
+</div>
+</div>
+<div class="clip__item " style="transform: translateY(-110%);">
+<div class="clip__content " style="transform: translateY(110%);">
+<div class="top-label top-white"><span>Haut de page</span></div>
+</div>
+</div>
+</div>
+</a>
+<script type="text/javascript" src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/jquery.min.js" id="jquery-js"></script>
+<script type="text/javascript" src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/main.min.js" id="main-script-js"></script>
+<script>window.lazyLoadOptions = {
+                elements_selector: "img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",
+                data_src: "lazy-src",
+                data_srcset: "lazy-srcset",
+                data_sizes: "lazy-sizes",
+                class_loading: "lazyloading",
+                class_loaded: "lazyloaded",
+                threshold: 300,
+                callback_loaded: function(element) {
+                    if ( element.tagName === "IFRAME" && element.dataset.rocketLazyload == "fitvidscompatible" ) {
+                        if (element.classList.contains("lazyloaded") ) {
+                            if (typeof window.jQuery != "undefined") {
+                                if (jQuery.fn.fitVids) {
+                                    jQuery(element).parent().fitVids();
+                                }
+                            }
+                        }
+                    }
+                }};
+        window.addEventListener('LazyLoad::Initialized', function (e) {
+            var lazyLoadInstance = e.detail.instance;
+            if (window.MutationObserver) {
+                var observer = new MutationObserver(function(mutations) {
+                    var image_count = 0;
+                    var iframe_count = 0;
+                    var rocketlazy_count = 0;
+                    mutations.forEach(function(mutation) {
+                        for (i = 0; i < mutation.addedNodes.length; i++) {
+                            if (typeof mutation.addedNodes[i].getElementsByTagName !== 'function') {
+                                return;
+                            }
+                           if (typeof mutation.addedNodes[i].getElementsByClassName !== 'function') {
+                                return;
+                            }
+                            images = mutation.addedNodes[i].getElementsByTagName('img');
+                            is_image = mutation.addedNodes[i].tagName == "IMG";
+                            iframes = mutation.addedNodes[i].getElementsByTagName('iframe');
+                            is_iframe = mutation.addedNodes[i].tagName == "IFRAME";
+                            rocket_lazy = mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');
+                            image_count += images.length;
+			                iframe_count += iframes.length;
+			                rocketlazy_count += rocket_lazy.length;
+                            if(is_image){
+                                image_count += 1;
+                            }
+                            if(is_iframe){
+                                iframe_count += 1;
+                            }
+                        }
+                    } );
+                    if(image_count > 0 || iframe_count > 0 || rocketlazy_count > 0){
+                        lazyLoadInstance.update();
+                    }
+                } );
+                var b      = document.getElementsByTagName("body")[0];
+                var config = { childList: true, subtree: true };
+                observer.observe(b, config);
+            }
+        }, false);</script><script data-no-minify="1" async="" src="./Image classification with a pre-trained deep neural network - Agence Web Kernix_files/lazyload.min.js"></script> 
+
+<div id="tarteaucitronRoot" class="tarteaucitronBeforeVisible"><div id="tarteaucitronPremium"></div><button type="button" id="tarteaucitronBack" aria-label="Fermer"></button><div id="tarteaucitron" role="dialog" aria-labelledby="dialogTitle">   <button type="button" id="tarteaucitronClosePanel">       Fermer   </button>   <div id="tarteaucitronServices">      <div class="tarteaucitronLine tarteaucitronMainLine" id="tarteaucitronMainLineOffset">         <span class="tarteaucitronH1" role="heading" aria-level="1" id="dialogTitle">Panneau de gestion des cookies</span>         <div id="tarteaucitronInfo">         En autorisant ces services tiers, vous acceptez le dépôt et la lecture de cookies et l'utilisation de technologies de suivi nécessaires à leur bon fonctionnement.         </div>         <div class="tarteaucitronName">            <span class="tarteaucitronH2" role="heading" aria-level="2">Préférences pour tous les services</span>         </div>         <div class="tarteaucitronAsk" id="tarteaucitronScrollbarAdjust">            <button type="button" id="tarteaucitronAllAllowed" class="tarteaucitronAllow">               <span class="tarteaucitronCheck"></span> Autoriser tous les cookies            </button>             <button type="button" id="tarteaucitronAllDenied" class="tarteaucitronDeny">               <span class="tarteaucitronCross"></span> Interdire tous les cookies            </button>         </div>      </div>      <div class="tarteaucitronBorder">         <div class="clear"></div><ul>         <li id="tarteaucitronServicesTitle_api" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetailsapi"><span class="tarteaucitronPlus"></span> APIs</button>            </div>            <div id="tarteaucitronDetailsapi" class="tarteaucitronDetails tarteaucitronInfoBox">               Les APIs permettent de charger des scripts : géolocalisation, moteurs de recherche, traductions, ...            </div>         <ul id="tarteaucitronServices_api"></ul></li>         <li id="tarteaucitronServicesTitle_other" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetailsother"><span class="tarteaucitronPlus"></span> Autre</button>            </div>            <div id="tarteaucitronDetailsother" class="tarteaucitronDetails tarteaucitronInfoBox">               Services visant à afficher du contenu web.            </div>         <ul id="tarteaucitronServices_other"></ul></li>         <li id="tarteaucitronServicesTitle_comment" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetailscomment"><span class="tarteaucitronPlus"></span> Commentaires</button>            </div>            <div id="tarteaucitronDetailscomment" class="tarteaucitronDetails tarteaucitronInfoBox">               Les gestionnaires de commentaires facilitent le dépôt de vos commentaires et luttent contre le spam.            </div>         <ul id="tarteaucitronServices_comment"></ul></li>         <li id="tarteaucitronServicesTitle_analytic" class="tarteaucitronHidden" style="display: block;">            <div class="tarteaucitronTitle">               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetailsanalytic"><span class="tarteaucitronPlus"></span> Mesure d'audience</button>            </div>            <div id="tarteaucitronDetailsanalytic" class="tarteaucitronDetails tarteaucitronInfoBox">               Les services de mesure d'audience permettent de générer des statistiques de fréquentation utiles à l'amélioration du site.            </div>         <ul id="tarteaucitronServices_analytic"><li id="gajsLine" class="tarteaucitronLine">   <div class="tarteaucitronName">       <span class="tarteaucitronH3" role="heading" aria-level="3">Google Analytics (ga.js)</span>       <span id="tacCLgajs" class="tarteaucitronListCookies">Ce service peut déposer 7 cookies.</span><br>       <a href="https://tarteaucitron.io/service/gajs/" target="_blank" rel="noreferrer noopener" title="Détail des cookies Google Analytics (ga.js) sur notre site (nouvelle fenêtre)">           En savoir plus       </a>        -        <a href="https://support.google.com/analytics/answer/6004245" target="_blank" rel="noreferrer noopener" title="Google Analytics (ga.js) (nouvelle fenêtre)">           Voir le site officiel       </a>   </div>   <div class="tarteaucitronAsk">       <button type="button" id="gajsAllowed" class="tarteaucitronAllow">           <span class="tarteaucitronCheck"></span> Autoriser       </button>        <button type="button" id="gajsDenied" class="tarteaucitronDeny">           <span class="tarteaucitronCross"></span> Interdire       </button>   </div></li></ul></li>         <li id="tarteaucitronServicesTitle_ads" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetailsads"><span class="tarteaucitronPlus"></span> Régies publicitaires</button>            </div>            <div id="tarteaucitronDetailsads" class="tarteaucitronDetails tarteaucitronInfoBox">               Les régies publicitaires permettent de générer des revenus en commercialisant les espaces publicitaires du site.            </div>         <ul id="tarteaucitronServices_ads"></ul></li>         <li id="tarteaucitronServicesTitle_social" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetailssocial"><span class="tarteaucitronPlus"></span> Réseaux sociaux</button>            </div>            <div id="tarteaucitronDetailssocial" class="tarteaucitronDetails tarteaucitronInfoBox">               Les réseaux sociaux permettent d'améliorer la convivialité du site et aident à sa promotion via les partages.            </div>         <ul id="tarteaucitronServices_social"></ul></li>         <li id="tarteaucitronServicesTitle_support" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetailssupport"><span class="tarteaucitronPlus"></span> Support</button>            </div>            <div id="tarteaucitronDetailssupport" class="tarteaucitronDetails tarteaucitronInfoBox">               Les services de support vous permettent d'entrer en contact avec l'équipe du site et d'aider à son amélioration.            </div>         <ul id="tarteaucitronServices_support"></ul></li>         <li id="tarteaucitronServicesTitle_video" class="tarteaucitronHidden">            <div class="tarteaucitronTitle">               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetailsvideo"><span class="tarteaucitronPlus"></span> Vidéos</button>            </div>            <div id="tarteaucitronDetailsvideo" class="tarteaucitronDetails tarteaucitronInfoBox">               Les services de partage de vidéo permettent d'enrichir le site de contenu multimédia et augmentent sa visibilité.            </div>         <ul id="tarteaucitronServices_video"></ul></li>             <li id="tarteaucitronNoServicesTitle" class="tarteaucitronLine" style="display: none;">Ce site n'utilise aucun cookie nécessitant votre consentement.</li>         </ul>         <div class="tarteaucitronHidden spacer-20" id="tarteaucitronScrollbarChild"></div>   <button type="button" id="tarteaucitronSaveClosePanel" onclick="tarteaucitron.userInterface.closePanel();">       Enregistrer et quitter   </button>         <div class="tarteaucitronHidden" id="tarteaucitronScrollbarChild" style="height:20px;display:block"></div>     <a class="tarteaucitronSelfLink" href="https://tarteaucitron.io/" rel="nofollow noreferrer noopener" target="_blank" title="tarteaucitron (nouvelle fenêtre)">🍋 Gestion des cookies par tarteaucitron.js</a>       </div>   </div></div><div id="tarteaucitronAlertBig" class="tarteaucitronAlertBigBottom" style="display: block; opacity: 1;"><div class="tarteaucitronAlertBigWrapper">   <span id="tarteaucitronDisclaimerAlert">       <div>Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. Acceptez-vous nos adorables cookies ? Pour en savoir plus : <a target="_blank" href="https://www.kernix.com/protection-des-donnees/">protection des données</a></div>   </span>   <span class="tarteaucitronAlertBigBtnWrapper">   <button type="button" class="tarteaucitronCTAButton tarteaucitronAllow" id="tarteaucitronPersonalize2">       <span class="tarteaucitronCheck"></span> Accepter   </button>   <button type="button" id="tarteaucitronCloseAlert">       Personnaliser   </button>   </span></div></div><div id="tarteaucitronPercentage" style="display: block;"></div><div id="tarteaucitronAlertSmall" class="tarteaucitronAlertSmallBottom" style="display: none;">   <button type="button" id="tarteaucitronManager">       Gérer mes cookies       <span id="tarteaucitronDot">           <span id="tarteaucitronDotGreen" style="width: 0%;"></span>           <span id="tarteaucitronDotYellow" style="width: 100%;"></span>           <span id="tarteaucitronDotRed" style="width: 0%;"></span>       </span>   </button><!-- @whitespace   --><button type="button" id="tarteaucitronCookiesNumber">1</button>   <div id="tarteaucitronCookiesListContainer">       <button type="button" id="tarteaucitronClosePanelCookie">           Fermer       </button>       <div class="tarteaucitronCookiesListMain" id="tarteaucitronCookiesTitle">            <span class="tarteaucitronH2" role="heading" aria-level="2" id="tarteaucitronCookiesNumberBis">1 cookie</span>       </div>       <div id="tarteaucitronCookiesList"><div class="tarteaucitronHidden">     <span class="tarteaucitronTitle tarteaucitronH3" role="heading" aria-level="3">        www.kernix.com    </span></div><ul class="cookie-list"><li class="tarteaucitronCookiesListMain">    <div class="tarteaucitronCookiesListLeft"><button type="button" class="purgeBtn" data-cookie="kernixCookie"><strong>×</strong></button> <strong>kernixCookie</strong>    </div>    <div class="tarteaucitronCookiesListRight">!gajs=wait</div></li></ul><div class="tarteaucitronHidden spacer-20"></div></div>    </div></div></div></body></html>
